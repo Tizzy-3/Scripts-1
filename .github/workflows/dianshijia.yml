@@ -1,10 +1,10 @@
 
-name: jingxi
+name: dianshijia
 
 on:
   workflow_dispatch:
   schedule:
-     - cron: '5 5 * * *'
+     - cron: '*/29 4,12,23 * * *'
   watch:
     types: started
 jobs:
@@ -20,11 +20,13 @@ jobs:
       - name: npm install
         run: |
           npm install
-      - name: '运行 【京喜】'
+      - name: '运行 【电视家】'
         run: |
-          node Task/jingxi.js
+          node Task/dianshijia.js
         env:
-          JD_COOKIE: ${{ secrets.JD_COOKIE }}
+          DSJ_HEADERS: ${{ secrets.DSJ_HEADERS }}
+          DSJ_DRAWAL: ${{ secrets.DSJ_DRAWAL }}
+          DSJ_NOTIFY_CONTROL: ${{ secrets.DSJ_NOTIFY_CONTROL }}
           PUSH_KEY: ${{ secrets.PUSH_KEY }}
           BARK_PUSH: ${{ secrets.BARK_PUSH }}
           TG_BOT_TOKEN: ${{ secrets.TG_BOT_TOKEN }}
